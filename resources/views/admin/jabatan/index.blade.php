@@ -56,13 +56,11 @@
                                                     href="{{ route('jabatan.edit', $item->id) }}">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </a>
-                                                <form action="{{ route('jabatan.destroy', $item->id) }}" method="POST">
+                                                <form action="{{ route('jabatan.destroy', $item->id) }}" method="POST"
+                                                    onsubmit="confirmDelete(event, this)">
                                                     @csrf
-                                                    @method('delete')
-                                                    <button onclick="return confirmdelete()" type="submit"
-                                                        class="btn btn-danger btn-sm py-2">
-                                                        <i class="fas fa-trash"></i> Delete
-                                                    </button>
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>
                                         </td>

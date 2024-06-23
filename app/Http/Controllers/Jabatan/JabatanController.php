@@ -83,6 +83,6 @@ class JabatanController extends Controller
         $jabatan = Jabatan::findOrFail($id);
         $jabatan->delete();
 
-        return redirect()->route('jabatan.index');
+        return redirect()->route('jabatan.index')->with('success', 'Jabatan berhasil dihapus.');;
     }
 }

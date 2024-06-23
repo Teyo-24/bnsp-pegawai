@@ -36,11 +36,12 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Foto</th>
-                                    <th class="w-25">Name</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Jabatan</th>
+                                    <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -61,6 +62,7 @@
                                         <td>{{ $item->tanggal_lahir }}</td>
                                         <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->jabatan->jabatan }}</td>
+                                        <td>{{ Str::limit($item->alamat), 70 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a class="btn btn-warning btn-sm py-2 mr-2"
@@ -71,11 +73,11 @@
                                                     href="{{ route('pegawai.edit', $item->id) }}">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </a>
-                                                <form action="{{ route('pegawai.destroy', $item->id) }}" method="POST">
+                                                <form action="{{ route('pegawai.destroy', $item->id) }}" method="POST"
+                                                    onsubmit="confirmDelete(event, this)">
                                                     @csrf
-                                                    @method('delete')
-                                                    <button onclick="return confirmdelete()" type="submit"
-                                                        class="btn btn-danger btn-sm py-2">
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm py-2">
                                                         <i class="fas fa-trash"></i> Delete
                                                     </button>
                                                 </form>
