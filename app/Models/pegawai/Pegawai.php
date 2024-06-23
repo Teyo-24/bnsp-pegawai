@@ -16,10 +16,11 @@ class Pegawai extends Model
         'name',
         'tanggal_lahir',
         'jenis_kelamin',
-        'jabatan',
+        'jabatan_id',
         'alamat',
     ];
 
+    // relasi ke jabatan
     public function jabatan(){
         return $this->belongsTo(Jabatan::class);
     }

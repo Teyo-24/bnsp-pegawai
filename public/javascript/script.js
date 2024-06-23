@@ -14,7 +14,7 @@ function confirmLogout() {
     return confirm("Apakah anda yakin ingin logout?");
 }
 
-// Confirmation alert
+// confirmation alert untuk hapus data
 function confirmDelete(event, form) {
     event.preventDefault();
     Swal.fire({

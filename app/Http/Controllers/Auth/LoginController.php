@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index(){
+        // mengarah kehalaman login
         return view('auth.login');
     }
 
     public function authenticate(Request $request)
     {
+        // memvalidasi kolom email dan password
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -22,7 +24,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/pegawai');
+            return redirect('/dashboard');
         }
 
         return back()->withErrors([

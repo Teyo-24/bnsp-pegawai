@@ -13,6 +13,7 @@ class JabatanController extends Controller
      */
     public function index()
     {
+        // menampilkan semua isi di table jabatan
         $jabatan = Jabatan::all();
         return view('admin.jabatan.index', compact('jabatan'));
     }
@@ -22,6 +23,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
+        // mengaharahkan ke halaman create
         return view('admin.jabatan.create');
     }
 
@@ -30,10 +32,12 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
+        // validasi kolom
        $request->validate([
         'jabatan' => 'required|unique:jabatan,jabatan'
        ]);
 
+       // membuat objek baru untuk menambah jabatan
        $jabatan = new Jabatan();
        $jabatan->jabatan = $request->jabatan;
        $jabatan->save();
@@ -46,6 +50,7 @@ class JabatanController extends Controller
      */
     public function show(string $id)
     {
+        // mengaharahkan ke halaman detail
         $jabatan = Jabatan::findOrFail($id);
         return view('admin.jabatan.show', compact('jabatan'));
     }
@@ -55,6 +60,7 @@ class JabatanController extends Controller
      */
     public function edit(string $id)
     {
+        // mengaharahkan ke halaman edit
         $jabatan = Jabatan::findOrFail($id);
         return view('admin.jabatan.edit', compact('jabatan'));
     }
@@ -64,6 +70,7 @@ class JabatanController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // menemukan id data dengan findOrFail dan melakukan validasi
         $jabatan = Jabatan::findOrFail($id);
         $request->validate([
             'jabatan' => 'required|unique:jabatan,jabatan'
@@ -80,6 +87,7 @@ class JabatanController extends Controller
      */
     public function destroy(string $id)
     {
+        // hapus data dengan id yang dipilih
         $jabatan = Jabatan::findOrFail($id);
         $jabatan->delete();
 

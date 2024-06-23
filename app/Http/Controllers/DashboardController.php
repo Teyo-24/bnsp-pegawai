@@ -13,6 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // menghitung semua data yang ada adalam tabel dengan count
         $pegawai = Pegawai::count();
         $jabatan = Jabatan::count();
         return view('admin.dashboard', compact('pegawai', 'jabatan'));

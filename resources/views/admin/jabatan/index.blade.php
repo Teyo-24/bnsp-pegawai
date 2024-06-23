@@ -60,7 +60,9 @@
                                                     onsubmit="confirmDelete(event, this)">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm py-2">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
                                                 </form>
                                             </div>
                                         </td>

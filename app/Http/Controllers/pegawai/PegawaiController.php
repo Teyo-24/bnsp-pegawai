@@ -15,7 +15,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        // menampilkan data pegawai di halaman index pegawai, all menampilkan semua
+        // menampilkan data pegawai di halaman index pegawai, all menampilkan semua, compact membuat array dari data yand ad
         $pegawai = Pegawai::with('jabatan')->get();
         return view('admin.pegawai.index', compact('pegawai'));
     }
@@ -42,7 +42,6 @@ class PegawaiController extends Controller
         'jenis_kelamin' => 'required',
         'jabatan_id' => 'required|exists:jabatan,id', // validasi jabatan_id
         'alamat' => 'required|string|max:255',
-
         ]);
 
         // Simpan gambar
@@ -58,10 +57,7 @@ class PegawaiController extends Controller
         $pegawai->jabatan_id = $request->jabatan_id;
         $pegawai->alamat = $request->alamat;
         $pegawai->save();
-
-        // Debugging (boleh dihapus setelah memastikan semua bekerja)
         // dd($request->all());
-
         return redirect()->route('pegawai.index')->with('success', 'Data pegawai berhasil disimpan.');
     }
 
@@ -71,6 +67,7 @@ class PegawaiController extends Controller
      */
     public function show(string $id)
     {
+        // menampilkan manu detail
         $pegawai = Pegawai::findOrfail($id);
         return view('admin.pegawai.show', compact('pegawai'));
     }
@@ -88,8 +85,7 @@ class PegawaiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-{
+    public function update(Request $request, string $id){
     $pegawai = Pegawai::findOrFail($id);
 
     $request->validate([
@@ -107,12 +103,10 @@ class PegawaiController extends Controller
         if ($pegawai->image) {
             Storage::disk('public')->delete($pegawai->image);
         }
-
         // Simpan gambar baru
         $imagePath = $request->file('image')->store('pegawai', 'public');
         $pegawai->image = $imagePath;
     }
-
     // Update data pegawai
     $pegawai->email = $request->email;
     $pegawai->name = $request->name;

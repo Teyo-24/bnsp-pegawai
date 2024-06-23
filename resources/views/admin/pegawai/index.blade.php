@@ -41,7 +41,7 @@
                                     <th>Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Jabatan</th>
-                                    <th>Alamat</th>
+                                    {{-- <th>Alamat</th> --}}
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                         <td>{{ $item->tanggal_lahir }}</td>
                                         <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->jabatan->jabatan }}</td>
-                                        <td>{{ Str::limit($item->alamat), 70 }}</td>
+                                        {{-- <td>{{ Str::limit($item->alamat), 70 }}</td> --}}
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a class="btn btn-warning btn-sm py-2 mr-2"

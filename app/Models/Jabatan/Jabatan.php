@@ -14,6 +14,7 @@ class Jabatan extends Model
         'jabatan'
     ];
 
+    // membuat relasi one to one ke table jabatan
     public function pegawai(){
         return $this->hasOne(Pegawai::class);
     }
