@@ -1,0 +1,20 @@
+/* style.css */
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.info-box {
+    animation: slideInRight 0.5s forwards; /* Menggunakan animasi slideInRight dengan durasi 0.5 detik */
+}
+
+.canva {
+    animation: slideInRight 0.5s forwards; /* Menggunakan animasi slideInRight dengan durasi 0.5 detik */
+}
